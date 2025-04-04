@@ -313,8 +313,7 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "MailCore2",
-            targets: ["MailCore"]),
+            name: "MailCore2"),
     ],
     dependencies: [
         .package(url: "https://github.com/jsflax/libetpan/", branch: "master"),
@@ -322,34 +321,8 @@ let package = Package(
         .package(url: "https://github.com/jsflax/ctemplate/", branch: "master")
     ],
     targets: [
-        .target(name: "MailCore",
-                dependencies: [
-                    "libetpan",
-                    .product(name: "tidy", package: "tidy-html5"),
-                    "ctemplate"
-                ],
-                path: ".",
-                exclude: exclude,
-                sources: cSources + objCSources,
-                publicHeadersPath: "include",
-                cSettings: baseCSettings + objCSettings,
-                cxxSettings: [.unsafeFlags(["-fno-objc-arc"])],
-                linkerSettings: [
-                    .linkedLibrary("c++"),
-                    .linkedLibrary("z"),
-                    .linkedLibrary("iconv"),
-                    .linkedLibrary("xml2"),
-                    .linkedLibrary("resolv"),
-                    .linkedLibrary("sasl2", .when(platforms: [.macOS])),
-                    .linkedFramework("Security"),
-                    .linkedFramework("CFNetwork"),
-                    .linkedFramework("Foundation"),
-                    .linkedFramework("SystemConfiguration")
-                ]),
-        .testTarget(name: "unittest",
-                    dependencies: ["MailCore"],
-                    path: "unittest")
-    ],
-    cLanguageStandard: .gnu11,
-    cxxLanguageStandard: .gnucxx20
+         .binaryTarget(name: "MailCore2",
+                      url: "https://github.com/mattmaddux/mailcore2/raw/master/bin/MailCore2-2020-09-24.xcframework.zip",
+                      checksum: "c3479968c758094165fb0b4de5ca7dd9f8aafac423388c51406c447f69a1b853")
+    ]
 )
