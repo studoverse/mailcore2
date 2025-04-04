@@ -315,11 +315,6 @@ let package = Package(
         .library(
             name: "MailCore2"),
     ],
-    dependencies: [
-        .package(url: "https://github.com/jsflax/libetpan/", branch: "master"),
-        .package(url: "https://github.com/jsflax/tidy-html5/", branch: "master"),
-        .package(url: "https://github.com/jsflax/ctemplate/", branch: "master")
-    ],
     targets: [
          .binaryTarget(name: "MailCore2",
                       url: "https://github.com/mattmaddux/mailcore2/raw/master/bin/MailCore2-2020-09-24.xcframework.zip",
